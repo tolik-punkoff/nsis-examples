@@ -36,7 +36,12 @@ Section -FinishSection
 	WriteRegStr HKLM "Software\${APPNAME}" "" "$INSTDIR"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayName" "${APPNAME}"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "UninstallString" "$UNINSTDIR\uninstall.exe"
+	
+	CreateDirectory "$UNINSTDIR"
 	WriteUninstaller "$UNINSTDIR\uninstall.exe"
+	
+	WriteINIStr "$UNINSTDIR\dirs.ini" "dirs" "I" "$INSTDIR"
+	WriteINIStr "$UNINSTDIR\dirs.ini" "dirs" "U" "$UNINSTDIR"
 
 SectionEnd
 
@@ -44,14 +49,22 @@ SectionEnd
 Section Uninstall
 	
 	SetDetailsView show
-	DetailPrint "INSTDIR: $INSTDIR"
+	
+	ReadINIStr $0 "$INSTDIR\dirs.ini" "dirs" "I"
+	IfErrors Dupa 0
+	ReadINIStr $1 "$INSTDIR\dirs.ini" "dirs" "U"
+	IfErrors Dupa 0
+	StrCpy $INSTDIR $0
+	StrCpy $UNINSTDIR $1
 	
 	;Remove from registry...
 	DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"
 	DeleteRegKey HKLM "SOFTWARE\${APPNAME}"
 
 	; Delete self
-	Delete "$INSTDIR\uninstall.exe"
+	Delete "$UNINSTDIR\uninstall.exe"
+	Delete "$UNINSTDIR\dirs.ini"
+	RMDir "$UNINSTDIR\"
 
 	; Delete Shortcuts
 	Delete "$SMPROGRAMS\TestApp\TestApp.lnk"
@@ -63,6 +76,13 @@ Section Uninstall
 	; Remove remaining directories
 	RMDir "$SMPROGRAMS\TestApp"
 	RMDir "$INSTDIR\"
+	
+	Goto OK
+	
+	Dupa:
+		MessageBox MB_ICONSTOP|MB_OK "Error reading $INSTDIR\dirs.ini! Uninstall aborted!"
+
+	OK:
 
 SectionEnd
 
