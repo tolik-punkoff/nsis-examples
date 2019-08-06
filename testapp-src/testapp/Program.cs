@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace bolvanka
+namespace testapp
 {
     static class Program
     {
@@ -12,9 +12,8 @@ namespace bolvanka
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            MessageBox.Show("I am running", "TestApp", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
     }
 }
