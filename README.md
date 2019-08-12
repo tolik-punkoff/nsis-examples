@@ -12,3 +12,5 @@ uninstall-bug - Illustration of the incorrect behavior of the uninstaller
 move-uninstall - Placing the uninstaller in other directory (not in $INSTDIR)
 
 sections - Sections example
+
+after-reboot - Continue install after system restart
