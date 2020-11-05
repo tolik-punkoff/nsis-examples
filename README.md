@@ -14,3 +14,5 @@ move-uninstall - Placing the uninstaller in other directory (not in $INSTDIR)
 sections - Sections example
 
 after-reboot - Continue install after system restart
+
+return-code-example - installer detect the exit code of the called program
