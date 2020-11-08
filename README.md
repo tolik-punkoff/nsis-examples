@@ -16,3 +16,5 @@ sections - Sections example
 after-reboot - Continue install after system restart
 
 return-code-example - installer detect the exit code of the called program
+
+create-restore-point - create system restore point in NSIS installer (using plugin SysRestore)
