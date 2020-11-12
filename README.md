@@ -20,3 +20,5 @@ return-code-example - installer detect the exit code of the called program
 create-restore-point - create system restore point in NSIS installer (using plugin SysRestore)
 
 regkey-exist-example - example checks if registry key exists
+
+dumplog - save installation details to file (don't work if installation run in silent mode)
