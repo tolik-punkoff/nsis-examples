@@ -22,3 +22,5 @@ create-restore-point - create system restore point in NSIS installer (using plug
 regkey-exist-example - example checks if registry key exists
 
 dumplog - save installation details to file (don't work if installation run in silent mode)
+
+pinball - Windows 3D Pinball Space Cadett installer source for Windows 7 and higher, please add proprietar files.
