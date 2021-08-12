@@ -1,4 +1,4 @@
-; Script generated with the Venis Install Wizard
+Unicode true
 
 ; Define your application name
 !define APPNAME "3D Pinball For Windows - Space Cadet"
@@ -11,6 +11,8 @@ InstallDirRegKey HKLM "Software\${APPNAME}" ""
 OutFile "PinballSetup.exe"
 
 DirText "Choose the folder in which to install ${APPNAMEANDVERSION}."
+
+ShowInstDetails show
 
 Section "3D Pinball For Windows - Space Cadet"
 
@@ -86,10 +88,14 @@ Section "3D Pinball For Windows - Space Cadet"
 	File "bin\SOUND999.WAV"
 	File "bin\table.bmp"
 	File "bin\wavemix.inf"
-	CreateShortCut "$DESKTOP\3D Pinball For Windows - Space Cadet.lnk" "$INSTDIR\pinball.exe"
-	CreateDirectory "$SMPROGRAMS\3D Pinball For Windows - Space Cadet"
-	CreateShortCut "$SMPROGRAMS\3D Pinball For Windows - Space Cadet\3D Pinball For Windows - Space Cadet.lnk" "$INSTDIR\pinball.exe"
-	CreateShortCut "$SMPROGRAMS\3D Pinball For Windows - Space Cadet\Uninstall.lnk" "$INSTDIR\uninstall.exe"
+	
+	MessageBox MB_YESNO "Create shortcut on Desktop?" IDNO NoCreate
+	CreateShortCut "$DESKTOP\Pinball.lnk" "$INSTDIR\pinball.exe"
+	
+	NoCreate:
+	CreateDirectory "$SMPROGRAMS\Pinball"
+	CreateShortCut "$SMPROGRAMS\Pinball\Pinball.lnk" "$INSTDIR\pinball.exe"
+	CreateShortCut "$SMPROGRAMS\Pinball\Uninstall.lnk" "$INSTDIR\uninstall.exe"
 
 SectionEnd
 
@@ -105,6 +111,8 @@ SectionEnd
 ;Uninstall section
 Section Uninstall
 
+	SetDetailsView show
+	
 	;Remove from registry...
 	DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"
 	DeleteRegKey HKLM "SOFTWARE\${APPNAME}"
@@ -113,9 +121,9 @@ Section Uninstall
 	Delete "$INSTDIR\uninstall.exe"
 
 	; Delete Shortcuts
-	Delete "$DESKTOP\3D Pinball For Windows - Space Cadet.lnk"
-	Delete "$SMPROGRAMS\3D Pinball For Windows - Space Cadet\3D Pinball For Windows - Space Cadet.lnk"
-	Delete "$SMPROGRAMS\3D Pinball For Windows - Space Cadet\Uninstall.lnk"
+	Delete "$DESKTOP\Pinball.lnk"
+	Delete "$SMPROGRAMS\Pinball\Pinball.lnk"
+	Delete "$SMPROGRAMS\Pinball\Uninstall.lnk"
 
 	; Clean up 3D Pinball For Windows - Space Cadet
 	Delete "$INSTDIR\FONT.DAT"
