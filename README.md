@@ -26,3 +26,5 @@ dumplog - save installation details to file (don't work if installation run in s
 pinball - Windows 3D Pinball Space Cadett installer source for Windows 7 and higher, please add proprietar files.
 
 space-sound-setup - Space Sound Demo setup script
+
+md5-sample - Calculate MD5 checksum using MD5 plugin
