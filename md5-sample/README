@@ -1,2 +1,3 @@
 Calculate MD5 checksum using MD5 plugin
 https://nsis.sourceforge.io/MD5_plugin
+Test EXE sources in nsis-examples/testapp-src
