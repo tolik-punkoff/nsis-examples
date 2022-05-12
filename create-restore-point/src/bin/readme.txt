@@ -1,1 +1,1 @@
-Sources HelloWorld.exe here: https://github.com/tolik-punkoff/csharp-examples/tree/master/hello-world
+Sources HelloWorld.exe here: https://github.com/tolik-punkoff/assembler-examples/tree/main/hello-world
