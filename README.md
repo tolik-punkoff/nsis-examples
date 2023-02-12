@@ -28,3 +28,5 @@ pinball - Windows 3D Pinball Space Cadett installer source for Windows 7 and hig
 space-sound-setup - Space Sound Demo setup script
 
 md5-sample - Calculate MD5 checksum using MD5 plugin
+
+foxit-updater-disable - 
