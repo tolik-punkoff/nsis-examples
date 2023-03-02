@@ -29,4 +29,6 @@ space-sound-setup - Space Sound Demo setup script
 
 md5-sample - Calculate MD5 checksum using MD5 plugin
 
-foxit-updater-disable - 
+foxit-updater-disable - Disable Foxit PDF Viewer update
+
+VPatchUtils - installer source for VPatch Utilities
