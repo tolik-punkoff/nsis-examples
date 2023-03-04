@@ -32,3 +32,5 @@ md5-sample - Calculate MD5 checksum using MD5 plugin
 foxit-updater-disable - Disable Foxit PDF Viewer update
 
 VPatchUtils - installer source for VPatch Utilities
+
+my-patch-test - My patch test example
