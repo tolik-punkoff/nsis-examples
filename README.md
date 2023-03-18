@@ -36,3 +36,5 @@ foxit-updater-disable - Disable Foxit PDF Viewer update
 VPatchUtils - installer source for VPatch Utilities
 
 my-patch-test - My patch test example
+
+get-local-time - Get local (computer) time example
