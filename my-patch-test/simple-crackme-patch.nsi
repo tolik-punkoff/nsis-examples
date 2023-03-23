@@ -53,6 +53,8 @@ Section "TestPatch"
 		DetailPrint "Patch:"
 		DetailPrint "$R1"
 		CopyFiles "$R0" "$INSTDIR\$TARGETFILE"
+		IfErrors CopyError 0 ;check copy file error
+		Delete "$R0" ;remove temporary file
 	${Else}
 		${If} $FILEMD5 == $MD5PATCH ; Patched file. Restore.
 			MessageBox MB_YESNO|MB_ICONQUESTION "File patched! Restore original?"  IDYES 0 IDNO EndProg
@@ -63,6 +65,8 @@ Section "TestPatch"
 			DetailPrint "Restore:"
 			DetailPrint "$R1"
 			CopyFiles "$R0" "$INSTDIR\$TARGETFILE"
+			IfErrors CopyError 0 ;check copy file error
+			Delete "$R0" ;remove temporary file
 		${Else} ;Other checksum, wrong file
 			MessageBox MB_ICONSTOP "Unknown or wrong file $INSTDIR\$TARGETFILE. Bad checksum."
 			DetailPrint "ERROR: Unknown or wrong file $TARGETFILE. Bad checksum. "
@@ -70,7 +74,11 @@ Section "TestPatch"
 		${EndIf}
 	${EndIf}
 	
-
+		
+	Goto EndProg
+	
+CopyError:
+	MessageBox MB_ICONSTOP "Copy error! Target file not changed!"
 	Goto EndProg
 NoTargetFile:
 	DetailPrint "ERROR: File $TARGETFILE NOT FOUND in $INSTDIR!"
