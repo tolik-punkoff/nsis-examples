@@ -32,7 +32,7 @@ Section "TestPatch"
 	;for target file
 	Var /GLOBAL "FILEMD5"
 	
-	;Get checksum for patched file
+	;Get checksum for patching file
 	md5dll::GetMD5File "$INSTDIR\$TARGETFILE"
 	Pop $FILEMD5
 	DetailPrint "Target file MD5: $FILEMD5"
